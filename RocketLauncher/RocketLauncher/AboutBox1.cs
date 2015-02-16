@@ -17,7 +17,7 @@ namespace RocketLauncher
             InitializeComponent();
             this.Text = "About Rocket Launcher";
             this.labelProductName.Text = "Rocket Launcher - 7 Programs in the Space of One!";
-            this.labelVersion.Text = String.Format("Version 1.0");
+            this.labelVersion.Text = String.Format("Version 2.0");
             this.labelCopyright.Text = "Copyright © 2015 Aaron Opell";
             this.labelCompanyName.Text = "http://aopell.me";
         }
