@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -216,7 +217,25 @@ namespace RocketLauncher
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        public void ResetIcons()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                PictureBox p = (PictureBox)this.Controls.Find("pictureBox" + (i + 1), false)[0];
+                p.Image = null;
+                try
+                {
+                    p.Image = Icon.ExtractAssociatedIcon(settings[i]).ToBitmap();
+                    p.Visible = true;
+                }
+                catch
+                {
+                    p.Visible = false;
+                }
+            }
+        }
+
+        public void SaveSettings()
         {
             Settings.Default.Program1 = settings[0];
             Settings.Default.Program2 = settings[1];
@@ -233,6 +252,11 @@ namespace RocketLauncher
             Settings.Default.Display6 = displayNames[5];
             Settings.Default.Display7 = displayNames[6];
             Settings.Default.Save();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveSettings();
         }
 
         private void removeProgramToolStripMenuItem_Click(object sender, EventArgs e)
@@ -255,6 +279,19 @@ namespace RocketLauncher
         {
             AboutBox1 ab = new AboutBox1();
             ab.ShowDialog();
+        }
+
+        private void Form1_AutoSizeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            SaveSettings();
+            ResetAll();
+            ResetAll();
+            ResetIcons();
         }
     }
 }

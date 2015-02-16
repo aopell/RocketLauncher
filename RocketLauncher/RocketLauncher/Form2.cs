@@ -27,7 +27,7 @@ namespace RocketLauncher
                 Form1.displayNames.RemoveAt(replaceval);
                 Form1.settings.Insert(replaceval, textBox2.Text);
                 Form1.displayNames.Insert(replaceval, textBox1.Text);
-                Application.Restart();
+                this.Close();
             }
             else
             {
