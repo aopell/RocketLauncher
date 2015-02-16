@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -66,7 +67,24 @@ namespace RocketLauncher
             }
             catch
             {
-                pictureBox1.Image = null;
+                if (textBox2.Text.StartsWith("http://") || textBox2.Text.StartsWith("https://"))
+                {
+                    try
+                    {
+                        string[] temp = new string[] {"//"};
+                        Uri u = new Uri(textBox2.Text);
+                        pictureBox1.ImageLocation = u.GetLeftPart(UriPartial.Authority) + "/favicon.ico";
+                        pictureBox1.LoadAsync();
+                    }
+                    catch
+                    {
+                        pictureBox1.Image = null;
+                    }
+                }
+                else
+                {
+                    pictureBox1.Image = null;
+                }
             }
         }
     }

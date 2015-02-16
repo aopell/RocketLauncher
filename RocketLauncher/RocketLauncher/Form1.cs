@@ -77,7 +77,24 @@ namespace RocketLauncher
                 }
                 catch
                 {
-                    p.Visible = false;
+                    if (settings[i].StartsWith("http://") || settings[i].StartsWith("https://"))
+                    {
+                        try
+                        {
+                            string[] temp = new string[] { "//" };
+                            Uri u = new Uri(settings[i]);
+                            p.ImageLocation = u.GetLeftPart(UriPartial.Authority) + "/favicon.ico";
+                            p.LoadAsync();
+                        }
+                        catch
+                        {
+                            p.Image = null;
+                        }
+                    }
+                    else
+                    {
+                        p.Image = null;
+                    }
                 }
             }
         }
@@ -217,24 +234,6 @@ namespace RocketLauncher
             }
         }
 
-        public void ResetIcons()
-        {
-            for (int i = 0; i < 7; i++)
-            {
-                PictureBox p = (PictureBox)this.Controls.Find("pictureBox" + (i + 1), false)[0];
-                p.Image = null;
-                try
-                {
-                    p.Image = Icon.ExtractAssociatedIcon(settings[i]).ToBitmap();
-                    p.Visible = true;
-                }
-                catch
-                {
-                    p.Visible = false;
-                }
-            }
-        }
-
         public void SaveSettings()
         {
             Settings.Default.Program1 = settings[0];
@@ -290,8 +289,6 @@ namespace RocketLauncher
         {
             SaveSettings();
             ResetAll();
-            ResetAll();
-            ResetIcons();
         }
     }
 }
