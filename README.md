@@ -1,3 +1,14 @@
-Does the number of programs pinned to your taskbar seem to keep growing? Do you think you have too many programs pinned, but you are not sure which to remove? Maybe you have some programs you want to be able to open quickly, but they do not necessarily need to be on your taskbar? In any case, RocketLauncher keeps 7 programs in the place of one.
+RocketLauncher quick app launcher for Windows
+Copyright 2015 Aaron Opell
 
-Just click Rocket Launcher > Add Program. It is that simple.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
