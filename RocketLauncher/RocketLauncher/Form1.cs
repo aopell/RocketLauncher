@@ -71,6 +71,7 @@ namespace RocketLauncher
             for (int i = 0; i < 7; i++)
             {
                 PictureBox p = (PictureBox)this.Controls.Find("pictureBox" + (i + 1), false)[0];
+                p.Visible = true;
                 try
                 {
                     p.Image = Icon.ExtractAssociatedIcon(settings[i]).ToBitmap();
@@ -88,12 +89,12 @@ namespace RocketLauncher
                         }
                         catch
                         {
-                            p.Image = null;
+                            p.Visible = false;
                         }
                     }
                     else
                     {
-                        p.Image = null;
+                        p.Visible = false;
                     }
                 }
             }
