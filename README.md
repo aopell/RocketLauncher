@@ -1,5 +1,5 @@
 #Rocket Launcher
-###Keep Seven Apps in the Place of One
+###Keep Seven Shortcuts in the Place of One
 
 Does the number of programs pinned to your taskbar seem to keep growing? Do you think you have too many programs pinned, but you are not sure which to remove? Maybe you have some programs you want to be able to open quickly, but they do not necessarily need to be on your taskbar?
 In any case, RocketLauncher makes your life simpler by keeping 7 programs in the place of one.
