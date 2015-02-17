@@ -125,7 +125,7 @@ namespace RocketLauncher
                 string webData = wc.DownloadString("https://raw.githubusercontent.com/aopell/RocketLauncher/master/NewestVersion");
                 if (webData.Split('-')[0] == AboutBox1.version)
                 {
-                    MessageBox.Show("The program is up to date");
+                    //MessageBox.Show("The program is up to date");
                 }
                 else
                 {
@@ -141,7 +141,7 @@ namespace RocketLauncher
             }
             catch
             {
-                MessageBox.Show("An error has occurred. You may not be connected to the internet.","Auto Updater");
+                //MessageBox.Show("An error has occurred. You may not be connected to the internet.","Auto Updater");
             }
         }
 

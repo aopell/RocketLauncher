@@ -17,8 +17,8 @@ namespace RocketLauncher
         {
             InitializeComponent();
             this.Text = "About Rocket Launcher";
-            this.labelProductName.Text = "Rocket Launcher - 7 Programs in the Space of One!";
-            this.labelVersion.Text = String.Format("Version 2.0");
+            this.labelProductName.Text = "Rocket Launcher - Seven Programs in the Space of One!";
+            this.labelVersion.Text = String.Format("Version {0}",version);
             this.labelCopyright.Text = "Copyright © 2015 Aaron Opell";
             this.labelCompanyName.Text = "http://aopell.me";
         }
@@ -103,7 +103,7 @@ namespace RocketLauncher
         }
         #endregion
 
-        public static string version = "2.1";
+        public static string version = "2.1.1";
 
         private void AboutBox1_Load(object sender, EventArgs e)
         {
