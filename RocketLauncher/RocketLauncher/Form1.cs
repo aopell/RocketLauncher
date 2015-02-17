@@ -40,7 +40,7 @@ namespace RocketLauncher
                 }
             }
 
-            for (int i = 0; i <  this.Controls.Count; i++)
+            for (int i = 0; i < this.Controls.Count; i++)
             {
                 if (this.Controls[i].GetType() == typeof(Button))
                 {
@@ -110,7 +110,7 @@ namespace RocketLauncher
         {
             this.CenterToScreen();
             ResetAll();
-            if(File.Exists(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/SimpleUpdater.exe"))
+            if (File.Exists(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/SimpleUpdater.exe"))
             {
                 File.Delete(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/SimpleUpdater.exe");
             }
@@ -153,8 +153,15 @@ namespace RocketLauncher
         {
             if (button7.Text != "<Add Program>")
             {
-                Process.Start(settings[0]);
-                this.Close();
+                try
+                {
+                    Process.Start(settings[0]);
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("That path is not valid");
+                }
             }
             else
             {
@@ -167,8 +174,15 @@ namespace RocketLauncher
         {
             if (button6.Text != "<Add Program>")
             {
-                Process.Start(settings[1]);
-                this.Close();
+                try
+                {
+                    Process.Start(settings[1]);
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("That path is not valid");
+                }
             }
             else
             {
@@ -181,8 +195,15 @@ namespace RocketLauncher
         {
             if (button5.Text != "<Add Program>")
             {
-                Process.Start(settings[2]);
-                this.Close();
+                try
+                {
+                    Process.Start(settings[2]);
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("That path is not valid");
+                }
             }
             else
             {
@@ -195,8 +216,15 @@ namespace RocketLauncher
         {
             if (button4.Text != "<Add Program>")
             {
-                Process.Start(settings[3]);
-                this.Close();
+                try
+                {
+                    Process.Start(settings[3]);
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("That path is not valid");
+                }
             }
             else
             {
@@ -209,8 +237,15 @@ namespace RocketLauncher
         {
             if (button3.Text != "<Add Program>")
             {
-                Process.Start(settings[4]);
-                this.Close();
+                try
+                {
+                    Process.Start(settings[4]);
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("That path is not valid");
+                }
             }
             else
             {
@@ -223,8 +258,15 @@ namespace RocketLauncher
         {
             if (button2.Text != "<Add Program>")
             {
-                Process.Start(settings[5]);
-                this.Close();
+                try
+                {
+                    Process.Start(settings[5]);
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("That path is not valid");
+                }
             }
             else
             {
@@ -237,8 +279,15 @@ namespace RocketLauncher
         {
             if (button1.Text != "<Add Program>")
             {
-                Process.Start(settings[6]);
-                this.Close();
+                try
+                {
+                    Process.Start(settings[6]);
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("That path is not valid");
+                }
             }
             else
             {
