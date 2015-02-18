@@ -133,7 +133,7 @@ namespace RocketLauncher
                     if (dr == System.Windows.Forms.DialogResult.Yes)
                     {
                         string CurrentFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                        wc.DownloadFile("https://github.com/aopell/SimpleUpdater/releases/download/v1.0/SimpleUpdater.exe", CurrentFolder + "/SimpleUpdater.exe");
+                        wc.DownloadFile("https://github.com/aopell/SimpleUpdater/releases/download/v1.1/SimpleUpdater.exe", CurrentFolder + "/SimpleUpdater.exe");
                         Process.Start(CurrentFolder + "/SimpleUpdater.exe", webData.Split('-')[1] + " " + System.Reflection.Assembly.GetExecutingAssembly().Location);
                         Application.Exit();
                     }
