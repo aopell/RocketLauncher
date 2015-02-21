@@ -6,7 +6,7 @@ In any case, RocketLauncher makes your life simpler by keeping 7 programs in the
 Just click on an empty slot to add a program, website, or shortcut.
 See the [wiki](https://github.com/aopell/RocketLauncher/wiki) to learn more about adding shortcuts.
 
-## [SimpleUpdater](http://github.com/aopell/SimpleUpdater)
+## [SimpleUpdater](http://github.com/aopell/SimpleUPD8R)
 RocketLauncher uses SimpleUpdater to make sure your program is up to date.
 Follow the link above to learn more
 
