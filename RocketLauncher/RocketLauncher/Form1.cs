@@ -108,6 +108,8 @@ namespace RocketLauncher
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            AboutBox1.LoadShortcutInformation();
+            
             this.CenterToScreen();
             ResetAll();
             if (File.Exists(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/SimpleUpdater.exe"))
@@ -135,6 +137,7 @@ namespace RocketLauncher
                         string CurrentFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                         wc.DownloadFile("https://github.com/aopell/SimpleUpdater/releases/download/v1.1/SimpleUpdater.exe", CurrentFolder + "/SimpleUpdater.exe");
                         Process.Start(CurrentFolder + "/SimpleUpdater.exe", webData.Split('-')[1] + " " + System.Reflection.Assembly.GetExecutingAssembly().Location);
+                        AboutBox1.BackupShortcutInformation();
                         Application.Exit();
                     }
                 }

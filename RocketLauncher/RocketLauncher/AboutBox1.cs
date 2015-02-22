@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RocketLauncher.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -18,7 +19,7 @@ namespace RocketLauncher
             InitializeComponent();
             this.Text = "About Rocket Launcher";
             this.labelProductName.Text = "Rocket Launcher - Seven Programs in the Space of One!";
-            this.labelVersion.Text = String.Format("Version {0}",version);
+            this.labelVersion.Text = String.Format("Version {0}", version);
             this.labelCopyright.Text = "Copyright © 2015 Aaron Opell";
             this.labelCompanyName.Text = "http://aopell.me";
         }
@@ -103,7 +104,7 @@ namespace RocketLauncher
         }
         #endregion
 
-        public static string version = "2.1.4";
+        public static string version = "2.1.5";
 
         private void AboutBox1_Load(object sender, EventArgs e)
         {
@@ -137,12 +138,13 @@ namespace RocketLauncher
                 }
                 else
                 {
-                    DialogResult dr = MessageBox.Show(String.Format("A newer version is available.\nYour version: {0}\nNewest Version: {1}\n\nWould you like to update now?", version, webData.Split('-')[0]),"An Update is Available",MessageBoxButtons.YesNo);
+                    DialogResult dr = MessageBox.Show(String.Format("A newer version is available.\nYour version: {0}\nNewest Version: {1}\n\nWould you like to update now?", version, webData.Split('-')[0]), "An Update is Available", MessageBoxButtons.YesNo);
                     if (dr == System.Windows.Forms.DialogResult.Yes)
                     {
                         string CurrentFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                         wc.DownloadFile("https://github.com/aopell/SimpleUPD8R/releases/download/v1.0/SimpleUpdater.exe", CurrentFolder + "/SimpleUpdater.exe");
                         Process.Start(CurrentFolder + "/SimpleUpdater.exe", webData.Split('-')[1] + " " + System.Reflection.Assembly.GetExecutingAssembly().Location);
+                        BackupShortcutInformation();
                         Application.Exit();
                     }
                 }
@@ -150,6 +152,31 @@ namespace RocketLauncher
             catch
             {
                 MessageBox.Show("An error has occurred. You may not be connected to the internet.");
+            }
+        }
+
+        public static void BackupShortcutInformation()
+        {
+            System.IO.File.WriteAllLines(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherSettings.rktl", Form1.settings);
+            System.IO.File.WriteAllLines(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherDisplayNames.rktl", Form1.displayNames);
+        }
+
+        public static void LoadShortcutInformation()
+        {
+            if (Settings.Default.FirstLaunch)
+            {
+                Settings.Default.FirstLaunch = false;
+                try
+                {
+                    Form1.settings = System.IO.File.ReadAllLines(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherSettings.rktl").ToList();
+                    Form1.displayNames = System.IO.File.ReadAllLines(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherDisplayNames.rktl").ToList();
+                    System.IO.File.Delete(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherSettings.rktl");
+                    System.IO.File.Delete(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherDisplayNames.rktl");
+                }
+                catch
+                {
+
+                }
             }
         }
     }
