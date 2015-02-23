@@ -25,6 +25,8 @@ namespace RocketLauncher
                 Form1.settings.Insert(listBox1.SelectedIndex, "");
                 Form1.displayNames.RemoveAt(listBox1.SelectedIndex);
                 Form1.displayNames.Insert(listBox1.SelectedIndex, "");
+                Form1.icons.RemoveAt(listBox1.SelectedIndex);
+                Form1.icons.Insert(listBox1.SelectedIndex, "");
                 this.Close();
             }
         }
@@ -41,7 +43,7 @@ namespace RocketLauncher
             {
                 if (s != "")
                 {
-                    listBox1.Items.Add(s);
+                    listBox1.Items.Add(s + " (" + Form1.settings[index] + ")");
                 }
                 else if (Form1.settings[index] != "")
                 {

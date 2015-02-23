@@ -35,9 +35,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(181, 126);
+            this.button1.Location = new System.Drawing.Point(241, 155);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 23);
+            this.button1.Size = new System.Drawing.Size(197, 28);
             this.button1.TabIndex = 1;
             this.button1.Text = "Remove Selected";
             this.button1.UseVisualStyleBackColor = true;
@@ -46,24 +47,28 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 12);
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(16, 15);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(320, 108);
+            this.listBox1.Size = new System.Drawing.Size(425, 132);
             this.listBox1.TabIndex = 2;
             // 
             // Form3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.button1;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 157);
+            this.ClientSize = new System.Drawing.Size(459, 193);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form3";
-            this.Text = "Remove Item";
+            this.Text = "Remove Shortcut";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
 

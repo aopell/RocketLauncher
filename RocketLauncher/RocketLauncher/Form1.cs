@@ -26,6 +26,7 @@ namespace RocketLauncher
         {
             settings = new List<string> { Settings.Default.Program1, Settings.Default.Program2, Settings.Default.Program3, Settings.Default.Program4, Settings.Default.Program5, Settings.Default.Program6, Settings.Default.Program7 };
             displayNames = new List<string> { Settings.Default.Display1, Settings.Default.Display2, Settings.Default.Display3, Settings.Default.Display4, Settings.Default.Display5, Settings.Default.Display6, Settings.Default.Display7 };
+            icons = new List<string>() { Settings.Default.Icon1, Settings.Default.Icon2, Settings.Default.Icon3, Settings.Default.Icon4, Settings.Default.Icon5, Settings.Default.Icon6, Settings.Default.Icon7 };
             slots = new List<bool>() { false, false, false, false, false, false, false };
 
             for (int i = 0; i < 7; i++)
@@ -74,29 +75,43 @@ namespace RocketLauncher
             {
                 PictureBox p = (PictureBox)this.Controls.Find("pictureBox" + (i + 1), false)[0];
                 p.Visible = true;
-                try
+                if (icons[i] != "")
                 {
-                    p.Image = Icon.ExtractAssociatedIcon(settings[i]).ToBitmap();
-                }
-                catch
-                {
-                    if (settings[i].StartsWith("http://") || settings[i].StartsWith("https://"))
+                    try
                     {
-                        try
+                        p.Image = Icon.ExtractAssociatedIcon(icons[i]).ToBitmap();
+                    }
+                    catch
+                    {
+                        p.Image = Properties.Resources.x_mark_32;
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        p.Image = Icon.ExtractAssociatedIcon(settings[i]).ToBitmap();
+                    }
+                    catch
+                    {
+                        if (settings[i].StartsWith("http://") || settings[i].StartsWith("https://"))
                         {
-                            string[] temp = new string[] { "//" };
-                            Uri u = new Uri(settings[i]);
-                            p.ImageLocation = u.GetLeftPart(UriPartial.Authority) + "/favicon.ico";
-                            p.LoadAsync();
+                            try
+                            {
+                                string[] temp = new string[] { "//" };
+                                Uri u = new Uri(settings[i]);
+                                p.ImageLocation = u.GetLeftPart(UriPartial.Authority) + "/favicon.ico";
+                                p.LoadAsync();
+                            }
+                            catch
+                            {
+                                p.Visible = false;
+                            }
                         }
-                        catch
+                        else
                         {
                             p.Visible = false;
                         }
-                    }
-                    else
-                    {
-                        p.Visible = false;
                     }
                 }
             }
@@ -105,11 +120,12 @@ namespace RocketLauncher
         public static List<string> settings = new List<string> { Settings.Default.Program1, Settings.Default.Program2, Settings.Default.Program3, Settings.Default.Program4, Settings.Default.Program5, Settings.Default.Program6, Settings.Default.Program7 };
         public static List<string> displayNames = new List<string> { Settings.Default.Display1, Settings.Default.Display2, Settings.Default.Display3, Settings.Default.Display4, Settings.Default.Display5, Settings.Default.Display6, Settings.Default.Display7 };
         public static List<bool> slots = new List<bool>() { false, false, false, false, false, false, false };
+        public static List<string> icons = new List<string>() { Settings.Default.Icon1, Settings.Default.Icon2, Settings.Default.Icon3, Settings.Default.Icon4, Settings.Default.Icon5, Settings.Default.Icon6, Settings.Default.Icon7 };
 
         private void Form1_Load(object sender, EventArgs e)
         {
             AboutBox1.LoadShortcutInformation();
-            
+
             this.CenterToScreen();
             ResetAll();
             if (File.Exists(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/SimpleUpdater.exe"))
@@ -338,6 +354,13 @@ namespace RocketLauncher
             Settings.Default.Display5 = displayNames[4];
             Settings.Default.Display6 = displayNames[5];
             Settings.Default.Display7 = displayNames[6];
+            Settings.Default.Icon1 = icons[0];
+            Settings.Default.Icon2 = icons[1];
+            Settings.Default.Icon3 = icons[2];
+            Settings.Default.Icon4 = icons[3];
+            Settings.Default.Icon5 = icons[4];
+            Settings.Default.Icon6 = icons[5];
+            Settings.Default.Icon7 = icons[6];
             Settings.Default.Save();
         }
 

@@ -202,5 +202,89 @@ namespace RocketLauncher.Properties {
                 this["FirstLaunch"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Icon1 {
+            get {
+                return ((string)(this["Icon1"]));
+            }
+            set {
+                this["Icon1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Icon2 {
+            get {
+                return ((string)(this["Icon2"]));
+            }
+            set {
+                this["Icon2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Icon3 {
+            get {
+                return ((string)(this["Icon3"]));
+            }
+            set {
+                this["Icon3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Icon4 {
+            get {
+                return ((string)(this["Icon4"]));
+            }
+            set {
+                this["Icon4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Icon5 {
+            get {
+                return ((string)(this["Icon5"]));
+            }
+            set {
+                this["Icon5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Icon6 {
+            get {
+                return ((string)(this["Icon6"]));
+            }
+            set {
+                this["Icon6"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Icon7 {
+            get {
+                return ((string)(this["Icon7"]));
+            }
+            set {
+                this["Icon7"] = value;
+            }
+        }
     }
 }

@@ -28,6 +28,8 @@ namespace RocketLauncher
                 Form1.displayNames.RemoveAt(replaceval);
                 Form1.settings.Insert(replaceval, textBox2.Text);
                 Form1.displayNames.Insert(replaceval, textBox1.Text);
+                Form1.icons.RemoveAt(replaceval);
+                Form1.icons.Insert(replaceval, openFileDialog2.FileName);
                 this.Close();
             }
             else
@@ -56,6 +58,8 @@ namespace RocketLauncher
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            Info inf = new Info();
+            inf.ShowDialog();
             this.CenterToScreen();
         }
 
@@ -85,6 +89,20 @@ namespace RocketLauncher
                 {
                     pictureBox1.Image = null;
                 }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            openFileDialog2.ShowDialog();
+            if (openFileDialog2.FileName.EndsWith(".ico"))
+            {
+                textBox3.Text = openFileDialog2.SafeFileName;
+                pictureBox1.Image = Icon.ExtractAssociatedIcon(openFileDialog2.FileName).ToBitmap();
+            }
+            else
+            {
+                MessageBox.Show("Please choose a file with the .ico file type");
             }
         }
     }
