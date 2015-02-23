@@ -65,7 +65,7 @@ namespace RocketLauncher
                     }
                     else
                     {
-                        this.Controls[i].Text = "<Add Program>";
+                        this.Controls[i].Text = "<Add Shortcut>";
                     }
                 }
             }
@@ -170,7 +170,7 @@ namespace RocketLauncher
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (button7.Text != "<Add Program>")
+            if (button7.Text != "<Add Shortcut>")
             {
                 try
                 {
@@ -191,7 +191,7 @@ namespace RocketLauncher
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (button6.Text != "<Add Program>")
+            if (button6.Text != "<Add Shortcut>")
             {
                 try
                 {
@@ -212,7 +212,7 @@ namespace RocketLauncher
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (button5.Text != "<Add Program>")
+            if (button5.Text != "<Add Shortcut>")
             {
                 try
                 {
@@ -233,7 +233,7 @@ namespace RocketLauncher
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (button4.Text != "<Add Program>")
+            if (button4.Text != "<Add Shortcut>")
             {
                 try
                 {
@@ -254,7 +254,7 @@ namespace RocketLauncher
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (button3.Text != "<Add Program>")
+            if (button3.Text != "<Add Shortcut>")
             {
                 try
                 {
@@ -275,7 +275,7 @@ namespace RocketLauncher
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (button2.Text != "<Add Program>")
+            if (button2.Text != "<Add Shortcut>")
             {
                 try
                 {
@@ -296,7 +296,7 @@ namespace RocketLauncher
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (button1.Text != "<Add Program>")
+            if (button1.Text != "<Add Shortcut>")
             {
                 try
                 {

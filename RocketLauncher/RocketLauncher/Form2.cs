@@ -58,36 +58,45 @@ namespace RocketLauncher
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            Info inf = new Info();
-            inf.ShowDialog();
             this.CenterToScreen();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            try
+            if(textBox2.Text != "" && !textBox3.Text.EndsWith(".ico"))
             {
-                pictureBox1.Image = Icon.ExtractAssociatedIcon(textBox2.Text).ToBitmap();
+                textBox3.Text = "Using Icon to Left";
             }
-            catch
+            else if (!textBox3.Text.EndsWith(".ico"))
             {
-                if (textBox2.Text.StartsWith("http://") || textBox2.Text.StartsWith("https://"))
+                textBox3.Text = "Select a Shortcut Path";
+            }
+            if (!textBox3.Text.EndsWith(".ico"))
+            {
+                try
                 {
-                    try
+                    pictureBox1.Image = Icon.ExtractAssociatedIcon(textBox2.Text).ToBitmap();
+                }
+                catch
+                {
+                    if (textBox2.Text.StartsWith("http://") || textBox2.Text.StartsWith("https://"))
                     {
-                        string[] temp = new string[] {"//"};
-                        Uri u = new Uri(textBox2.Text);
-                        pictureBox1.ImageLocation = u.GetLeftPart(UriPartial.Authority) + "/favicon.ico";
-                        pictureBox1.LoadAsync();
+                        try
+                        {
+                            string[] temp = new string[] { "//" };
+                            Uri u = new Uri(textBox2.Text);
+                            pictureBox1.ImageLocation = u.GetLeftPart(UriPartial.Authority) + "/favicon.ico";
+                            pictureBox1.LoadAsync();
+                        }
+                        catch
+                        {
+                            pictureBox1.Image = null;
+                        }
                     }
-                    catch
+                    else
                     {
                         pictureBox1.Image = null;
                     }
-                }
-                else
-                {
-                    pictureBox1.Image = null;
                 }
             }
         }
@@ -104,6 +113,16 @@ namespace RocketLauncher
             {
                 MessageBox.Show("Please choose a file with the .ico file type");
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Info inf = new Info();
+            inf.ShowDialog();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

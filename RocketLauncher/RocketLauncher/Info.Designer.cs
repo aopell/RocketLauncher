@@ -50,9 +50,10 @@
             this.button1.Location = new System.Drawing.Point(12, 338);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(575, 29);
-            this.button1.TabIndex = 2;
+            this.button1.TabIndex = 0;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Info
             // 
@@ -64,6 +65,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "Info";
             this.Text = "Info";
+            this.Load += new System.EventHandler(this.Info_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
