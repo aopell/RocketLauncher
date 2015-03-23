@@ -104,7 +104,7 @@ namespace RocketLauncher
         }
         #endregion
 
-        public static string version = "3.0";
+        public static string version = "3.1";
 
         private void AboutBox1_Load(object sender, EventArgs e)
         {
@@ -128,31 +128,8 @@ namespace RocketLauncher
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                WebClient wc = new WebClient();
-                string webData = wc.DownloadString("https://raw.githubusercontent.com/aopell/RocketLauncher/master/NewestVersion");
-                if (webData.Split('-')[0] == version)
-                {
-                    MessageBox.Show("The program is up to date");
-                }
-                else
-                {
-                    DialogResult dr = MessageBox.Show(String.Format("A newer version is available.\nYour version: {0}\nNewest Version: {1}\n\nWould you like to update now?", version, webData.Split('-')[0]), "An Update is Available", MessageBoxButtons.YesNo);
-                    if (dr == System.Windows.Forms.DialogResult.Yes)
-                    {
-                        string CurrentFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                        wc.DownloadFile("https://github.com/aopell/SimpleUpdater/releases/download/v1.1/SimpleUpdater.exe", CurrentFolder + "/SimpleUpdater.exe");
-                        Process.Start(CurrentFolder + "/SimpleUpdater.exe", webData.Split('-')[1] + " " + System.Reflection.Assembly.GetExecutingAssembly().Location);
-                        BackupShortcutInformation();
-                        Application.Exit();
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("An error has occurred. You may not be connected to the internet.");
-            }
+            UpdateAvailable updateAvailable = new UpdateAvailable();
+            updateAvailable.ShowDialog();
         }
 
         public static void BackupShortcutInformation()
@@ -166,16 +143,20 @@ namespace RocketLauncher
             if (Settings.Default.FirstLaunch)
             {
                 Settings.Default.FirstLaunch = false;
+                Settings.Default.Save();
                 try
                 {
-                    Form1.settings = System.IO.File.ReadAllLines(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherSettings.rktl").ToList();
-                    Form1.displayNames = System.IO.File.ReadAllLines(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherDisplayNames.rktl").ToList();
-                    System.IO.File.Delete(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherSettings.rktl");
-                    System.IO.File.Delete(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherDisplayNames.rktl");
+                    if (System.IO.File.Exists(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherSettings.rktl"))
+                    {
+                        Form1.settings = System.IO.File.ReadAllLines(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherSettings.rktl").ToList();
+                        Form1.displayNames = System.IO.File.ReadAllLines(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherDisplayNames.rktl").ToList();
+                        System.IO.File.Delete(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherSettings.rktl");
+                        System.IO.File.Delete(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/RocketLauncherDisplayNames.rktl");
+                    }
                 }
                 catch
                 {
-
+                    MessageBox.Show("Error loading settings files. Your old shortcuts may or may not appear.");
                 }
             }
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -13,29 +14,39 @@ namespace RocketLauncher
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        int selectedButtonIndex;
+
+        public Form2(int buttonIndex)
         {
+            selectedButtonIndex = buttonIndex;
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text != "")
+            if (selectedButtonIndex == -1)
             {
-                int replaceval = pickButtonSlot();
+                selectedButtonIndex = pickButtonSlot();
+            }
 
-                Form1.settings.RemoveAt(replaceval);
-                Form1.displayNames.RemoveAt(replaceval);
-                Form1.settings.Insert(replaceval, textBox2.Text);
-                Form1.displayNames.Insert(replaceval, textBox1.Text);
-                Form1.icons.RemoveAt(replaceval);
-                Form1.icons.Insert(replaceval, openFileDialog2.FileName);
-                this.Close();
-            }
-            else
+            if(textBox2.Text == "")
             {
-                MessageBox.Show("Error! Path must not be blank!");
+                MessageBox.Show("Path must not be blank");
+                return;
             }
+
+            if ((textBox2.Text.StartsWith("http://") || textBox2.Text.StartsWith("https://")) && openFileDialog2.FileName == "Select a File")
+            {
+                openFileDialog2.FileName = textBox2.Text;
+            }
+
+            Form1.settings.RemoveAt(selectedButtonIndex);
+            Form1.displayNames.RemoveAt(selectedButtonIndex);
+            Form1.settings.Insert(selectedButtonIndex, textBox2.Text);
+            Form1.displayNames.Insert(selectedButtonIndex, textBox1.Text);
+            Form1.icons.RemoveAt(selectedButtonIndex);
+            Form1.icons.Insert(selectedButtonIndex, openFileDialog2.FileName);
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -48,7 +59,7 @@ namespace RocketLauncher
         {
             for (int i = 0; i < 7; i++)
             {
-                if(Form1.settings[i] == "")
+                if (Form1.settings[i] == "")
                 {
                     return i;
                 }
@@ -63,15 +74,15 @@ namespace RocketLauncher
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if(textBox2.Text != "" && !textBox3.Text.EndsWith(".ico"))
+            if (textBox2.Text != "" && openFileDialog2.FileName == "Select a File")
             {
                 textBox3.Text = "Using Icon to Left";
             }
-            else if (!textBox3.Text.EndsWith(".ico"))
+            else if (openFileDialog2.FileName == "Select a File")
             {
                 textBox3.Text = "Select a Shortcut Path";
             }
-            if (!textBox3.Text.EndsWith(".ico"))
+            if (openFileDialog2.FileName == "Select a File")
             {
                 try
                 {
@@ -103,15 +114,11 @@ namespace RocketLauncher
 
         private void button3_Click(object sender, EventArgs e)
         {
-            openFileDialog2.ShowDialog();
-            if (openFileDialog2.FileName.EndsWith(".ico"))
+            DialogResult dr = openFileDialog2.ShowDialog();
+            textBox3.Text = openFileDialog2.SafeFileName;
+            if (dr == DialogResult.OK)
             {
-                textBox3.Text = openFileDialog2.SafeFileName;
                 pictureBox1.Image = Icon.ExtractAssociatedIcon(openFileDialog2.FileName).ToBitmap();
-            }
-            else
-            {
-                MessageBox.Show("Please choose a file with the .ico file type");
             }
         }
 
@@ -123,6 +130,38 @@ namespace RocketLauncher
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            openFileDialog2.FileName = "Select a File";
+
+            try
+            {
+                pictureBox1.Image = Icon.ExtractAssociatedIcon(textBox2.Text).ToBitmap();
+                textBox3.Text = "Using Icon to Left";
+            }
+            catch
+            {
+                if (textBox2.Text.StartsWith("http://") || textBox2.Text.StartsWith("https://"))
+                {
+                    try
+                    {
+                        string[] temp = new string[] { "//" };
+                        Uri u = new Uri(textBox2.Text);
+                        pictureBox1.ImageLocation = u.GetLeftPart(UriPartial.Authority) + "/favicon.ico";
+                        pictureBox1.LoadAsync();
+                        openFileDialog2.FileName = textBox2.Text;
+                        textBox3.Text = "Using Icon to Left";
+                    }
+                    catch
+                    {
+                        pictureBox1.Image = null;
+                        textBox3.Text = "Select a Shortcut Path";
+                    }
+                }
+                else
+                {
+                    pictureBox1.Image = null;
+                    textBox3.Text = "Select a Shortcut Path";
+                }
+            }
         }
     }
 }

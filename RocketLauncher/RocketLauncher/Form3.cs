@@ -19,16 +19,20 @@ namespace RocketLauncher
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItems.Count != 0)
+            for (int i = 0; i < listBox1.Items.Count; i++)
             {
-                Form1.settings.RemoveAt(listBox1.SelectedIndex);
-                Form1.settings.Insert(listBox1.SelectedIndex, "");
-                Form1.displayNames.RemoveAt(listBox1.SelectedIndex);
-                Form1.displayNames.Insert(listBox1.SelectedIndex, "");
-                Form1.icons.RemoveAt(listBox1.SelectedIndex);
-                Form1.icons.Insert(listBox1.SelectedIndex, "");
-                this.Close();
+                if (listBox1.SelectedItems.Contains(listBox1.Items[i]))
+                {
+                    Form1.settings.RemoveAt(i);
+                    Form1.settings.Insert(i, "");
+                    Form1.displayNames.RemoveAt(i);
+                    Form1.displayNames.Insert(i, "");
+                    Form1.icons.RemoveAt(i);
+                    Form1.icons.Insert(i, "");
+                }
             }
+
+            this.Close();
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -39,7 +43,7 @@ namespace RocketLauncher
 
             int index = 0;
 
-            foreach(string s in Form1.displayNames)
+            foreach (string s in Form1.displayNames)
             {
                 if (s != "")
                 {

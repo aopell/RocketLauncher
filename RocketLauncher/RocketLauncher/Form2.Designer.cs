@@ -42,6 +42,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.button4 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(116, 21);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(325, 22);
             this.textBox1.TabIndex = 1;
@@ -76,7 +77,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(116, 58);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(251, 22);
             this.textBox2.TabIndex = 3;
@@ -85,7 +86,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(167, 144);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(279, 28);
             this.button1.TabIndex = 4;
@@ -96,7 +97,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(376, 55);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 28);
             this.button2.TabIndex = 5;
@@ -154,7 +155,7 @@
             // openFileDialog2
             // 
             this.openFileDialog2.DefaultExt = "ico";
-            this.openFileDialog2.FileName = "Please select a .ico file";
+            this.openFileDialog2.FileName = "Select a File";
             // 
             // button4
             // 
@@ -166,12 +167,22 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(275, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(169, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Click the icon to remove it";
+            // 
             // Form2
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 185);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox3);
@@ -185,7 +196,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form2";
@@ -212,5 +223,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -117,17 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>Adding a Shortcut:
-
-- To add a program, often selecting the program itself is better than selecting a shortcut to that program.
-- To add a website, make sure you start with "http://" or "https://"
-- To add a Steam game, DO NOT select an existing shortcut to the game. Use the format "steam://run/gameid"
-
-The program will automatically try to pick an appropriate icon for a program or website.
-
-- To add a custom icon, select an existing .ico file using the browse button next to "Icon:"</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

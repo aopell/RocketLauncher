@@ -75,7 +75,7 @@ namespace RocketLauncher
             {
                 PictureBox p = (PictureBox)this.Controls.Find("pictureBox" + (i + 1), false)[0];
                 p.Visible = true;
-                if (icons[i] != "")
+                if (icons[i] != "" && !(icons[i].StartsWith("http://") || icons[i].StartsWith("https://")))
                 {
                     try
                     {
@@ -137,31 +137,8 @@ namespace RocketLauncher
 
         public static void CheckForUpdates()
         {
-            try
-            {
-                WebClient wc = new WebClient();
-                string webData = wc.DownloadString("https://raw.githubusercontent.com/aopell/RocketLauncher/master/NewestVersion");
-                if (webData.Split('-')[0] == AboutBox1.version)
-                {
-                    //MessageBox.Show("The program is up to date");
-                }
-                else
-                {
-                    DialogResult dr = MessageBox.Show(String.Format("A newer version is available.\nYour version: {0}\nNewest Version: {1}\n\nWould you like to update now?", AboutBox1.version, webData.Split('-')[0]), "An Update is Available", MessageBoxButtons.YesNo);
-                    if (dr == System.Windows.Forms.DialogResult.Yes)
-                    {
-                        string CurrentFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                        wc.DownloadFile("https://github.com/aopell/SimpleUpdater/releases/download/v1.1/SimpleUpdater.exe", CurrentFolder + "/SimpleUpdater.exe");
-                        Process.Start(CurrentFolder + "/SimpleUpdater.exe", webData.Split('-')[1] + " " + System.Reflection.Assembly.GetExecutingAssembly().Location);
-                        AboutBox1.BackupShortcutInformation();
-                        Application.Exit();
-                    }
-                }
-            }
-            catch
-            {
-                //MessageBox.Show("An error has occurred. You may not be connected to the internet.","Auto Updater");
-            }
+            UpdateAvailable ua = new UpdateAvailable(false);
+            ua.ShowDialog();
         }
 
         private void Form1_ResizeBegin(object sender, EventArgs e)
@@ -184,7 +161,7 @@ namespace RocketLauncher
             }
             else
             {
-                Form2 f2 = new Form2();
+                Form2 f2 = new Form2(0);
                 f2.ShowDialog();
             }
         }
@@ -205,7 +182,7 @@ namespace RocketLauncher
             }
             else
             {
-                Form2 f2 = new Form2();
+                Form2 f2 = new Form2(1);
                 f2.ShowDialog();
             }
         }
@@ -226,7 +203,7 @@ namespace RocketLauncher
             }
             else
             {
-                Form2 f2 = new Form2();
+                Form2 f2 = new Form2(2);
                 f2.ShowDialog();
             }
         }
@@ -247,7 +224,7 @@ namespace RocketLauncher
             }
             else
             {
-                Form2 f2 = new Form2();
+                Form2 f2 = new Form2(3);
                 f2.ShowDialog();
             }
         }
@@ -268,7 +245,7 @@ namespace RocketLauncher
             }
             else
             {
-                Form2 f2 = new Form2();
+                Form2 f2 = new Form2(4);
                 f2.ShowDialog();
             }
         }
@@ -289,7 +266,7 @@ namespace RocketLauncher
             }
             else
             {
-                Form2 f2 = new Form2();
+                Form2 f2 = new Form2(5);
                 f2.ShowDialog();
             }
         }
@@ -310,26 +287,16 @@ namespace RocketLauncher
             }
             else
             {
-                Form2 f2 = new Form2();
+                Form2 f2 = new Form2(6);
                 f2.ShowDialog();
             }
         }
 
         private void addProgramToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int j = 0;
-
-            foreach (string s in settings)
+            if (slots.Contains(false))
             {
-                if (s != "")
-                {
-                    j++;
-                }
-            }
-
-            if (j != 7)
-            {
-                Form2 f2 = new Form2();
+                Form2 f2 = new Form2(-1);
                 f2.ShowDialog();
             }
             else
@@ -400,6 +367,11 @@ namespace RocketLauncher
         {
             SaveSettings();
             ResetAll();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
