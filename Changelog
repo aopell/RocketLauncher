@@ -1,9 +1,5 @@
 Changelog:
 -------------------------------------------------------------
-- Fixed website favicons not appearing
-- Better update dialog box with changelog
-- When clicking the shortcut is created where you clicked
-  - When using the File menu, items are added from top to bottom (in open slots)
-- Shortcuts should save when updating (I hope)
+- Fixed issue with icons showing as a red X for no reason
 
 More information here: https://github.com/aopell/RocketLauncher/releases/latest
