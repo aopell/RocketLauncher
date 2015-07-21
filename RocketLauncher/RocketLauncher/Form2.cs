@@ -45,7 +45,7 @@ namespace RocketLauncher
             Form1.settings.Insert(selectedButtonIndex, textBox2.Text);
             Form1.displayNames.Insert(selectedButtonIndex, textBox1.Text);
             Form1.icons.RemoveAt(selectedButtonIndex);
-            Form1.icons.Insert(selectedButtonIndex, openFileDialog2.FileName);
+            Form1.icons.Insert(selectedButtonIndex, textBox3.Text);
             this.Close();
         }
 
@@ -53,6 +53,7 @@ namespace RocketLauncher
         {
             openFileDialog1.ShowDialog();
             textBox2.Text = openFileDialog1.FileName;
+            textBox3.Text = textBox2.Text;
         }
 
         public int pickButtonSlot()
@@ -76,7 +77,7 @@ namespace RocketLauncher
         {
             if (textBox2.Text != "" && openFileDialog2.FileName == "Select a File")
             {
-                textBox3.Text = "Using Icon to Left";
+                textBox3.Text = textBox2.Text;
             }
             else if (openFileDialog2.FileName == "Select a File")
             {
@@ -135,7 +136,7 @@ namespace RocketLauncher
             try
             {
                 pictureBox1.Image = Icon.ExtractAssociatedIcon(textBox2.Text).ToBitmap();
-                textBox3.Text = "Using Icon to Left";
+                textBox3.Text = textBox2.Text;
             }
             catch
             {
@@ -148,7 +149,7 @@ namespace RocketLauncher
                         pictureBox1.ImageLocation = u.GetLeftPart(UriPartial.Authority) + "/favicon.ico";
                         pictureBox1.LoadAsync();
                         openFileDialog2.FileName = textBox2.Text;
-                        textBox3.Text = "Using Icon to Left";
+                        textBox3.Text = textBox2.Text;
                     }
                     catch
                     {

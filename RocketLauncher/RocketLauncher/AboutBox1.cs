@@ -104,7 +104,7 @@ namespace RocketLauncher
         }
         #endregion
 
-        public static string version = "3.1";
+        public static string version = "3.2";
 
         private void AboutBox1_Load(object sender, EventArgs e)
         {
